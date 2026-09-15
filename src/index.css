@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #f9fafb;
+  --surface: #ffffff;
+  --card: #f9fafb;
+  --text: #111827;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+}
+
+html.dark {
+  --bg: #0b0f19;
+  --surface: #111827;
+  --card: #151c2b;
+  --text: #f9fafb;
+  --muted: #9ca3af;
+  --border: #374151;
+}
+
+.theme-page {
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+.theme-surface {
+  background-color: var(--surface);
+  border-color: var(--border);
+}
+
+.theme-card {
+  background-color: var(--card);
+  border-color: var(--border);
+}
+
+.theme-heading {
+  color: var(--text);
+}
+
+.theme-muted {
+  color: var(--muted);
+}
+
+.theme-input {
+  background-color: var(--surface);
+  color: var(--text);
+  border-color: var(--border);
+}
+
+.theme-input::placeholder {
+  color: var(--muted);
+}
+
+.theme-button {
+  background-color: var(--surface);
+  color: var(--muted);
+  border-color: var(--border);
+}
+
+.theme-button:hover {
+  background-color: var(--card);
+  color: var(--text);
+}
+
+@media print {
+  html,
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  .theme-page,
+  .theme-surface,
+  .theme-card {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  .theme-heading,
+  .theme-muted {
+    color: #000000 !important;
+  }
+
+  .text-gray-400,
+  .text-gray-500,
+  .text-gray-600,
+  .text-gray-700,
+  .text-gray-800 {
+    color: #000000 !important;
+  }
+
+  .text-blue-600 {
+    color: #2563eb !important;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
