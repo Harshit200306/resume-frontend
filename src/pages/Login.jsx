@@ -8,12 +8,15 @@ function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [message, setMessage] = useState('')
+  const [messageType, setMessageType] = useState('')
+  const [loading, setLoading] = useState(false)
 
   const navigate = useNavigate()
   const { login } = useAuth()
 
   const handleLogin = async (event) => {
     event.preventDefault()
+    setLoading(true)
 
     try {
       const data = await loginUser({
@@ -22,15 +25,27 @@ function Login() {
       })
 
       login(data.token, data.name)
-      setMessage('Login successful')
 
-      navigate('/dashboard')
+
+      setMessage('Login successful')
+      setMessageType('success')
+
+       setTimeout(() => {
+       navigate('/dashboard')
+        }, 1500)
+
+
+
     } catch (error) {
       if (error.response) {
         setMessage(error.response.data.message)
+        setMessageType('error')
       } else {
         setMessage('Something went wrong')
+        setMessageType('error')
       }
+    }    finally {
+      setLoading(false)
     }
   }
 
@@ -110,19 +125,33 @@ function Login() {
             </div>
 
             <button
-              type="submit"
-              className="w-full rounded-lg bg-blue-600 px-5 py-3 font-medium text-white transition hover:bg-blue-700"
-            >
-              Login
-            </button>
+  type="submit"
+  disabled={loading}
+  className="w-full rounded-lg bg-blue-600 px-5 py-3 font-medium text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-70"
+>
+  {loading ? (
+    <span className="flex items-center justify-center gap-2">
+      <span className="h-5 w-5 animate-spin rounded-full border-2 border-white border-t-transparent"></span>
+      Logging in...
+    </span>
+  ) : (
+    'Login'
+  )}
+</button>
 
           </form>
 
-          {message && (
-            <p className="mt-5 rounded-lg border border-red-200 bg-red-50 p-3 text-center text-sm font-medium text-red-600">
-              {message}
-            </p>
-          )}
+{message && (
+  <p
+    className={`mt-5 rounded-lg border p-3 text-center text-sm font-medium ${
+      messageType === 'success'
+        ? 'border-green-200 bg-green-50 text-green-600'
+        : 'border-red-200 bg-red-50 text-red-600'
+    }`}
+  >
+    {message}
+  </p>
+)}
 
           <p className="theme-muted mt-7 text-center text-sm">
             Don't have an account?{' '}
