@@ -21,8 +21,7 @@ function Login() {
         password
       })
 
-      login(data.token)
-
+      login(data.token, data.name)
       setMessage('Login successful')
 
       navigate('/dashboard')

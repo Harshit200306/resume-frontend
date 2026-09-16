@@ -10,13 +10,14 @@ export function AuthProvider({ children }) {
 
   const navigate = useNavigate()
 
-  const login = (newToken) => {
-    localStorage.setItem('token', newToken)
-    setToken(newToken)
-  }
-
+const login = (newToken, userName) => {
+  localStorage.setItem('token', newToken)
+  localStorage.setItem('userName', userName)
+  setToken(newToken)
+}
   const logout = () => {
     localStorage.removeItem('token')
+    localStorage.removeItem('userName')
     setToken(null)
      navigate('/')
   }

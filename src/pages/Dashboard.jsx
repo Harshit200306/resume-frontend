@@ -7,6 +7,7 @@ import ThemeToggle from '../components/ThemeToggle'
 function Dashboard() {
   const { logout } = useAuth()
   const navigate = useNavigate()
+  const userName = localStorage.getItem('userName')
 
   const [resumes, setResumes] = useState([])
   const [message, setMessage] = useState('')
@@ -83,7 +84,7 @@ function Dashboard() {
 
             <div>
               <h2 className="theme-heading text-3xl font-bold">
-                My Resumes
+               Hi!👋 {userName}, your resumes 
               </h2>
 
               <p className="theme-muted mt-2">
