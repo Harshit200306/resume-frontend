@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom'
+import ThemeToggle from '../components/ThemeToggle'
 
 function Landing() {
   const navigate = useNavigate()
@@ -14,6 +15,9 @@ function Landing() {
           </h1>
 
           <div className="flex items-center gap-3">
+
+             <ThemeToggle />
+
 
             <button
               className="theme-muted rounded-lg px-4 py-2 font-medium transition hover:bg-gray-100"

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { registerUser } from '../services/authService'
 import { useNavigate } from 'react-router-dom'
+import ThemeToggle from '../components/ThemeToggle'
 
 function Register() {
   const [name, setName] = useState('')
@@ -44,12 +45,16 @@ function Register() {
 
         <div className="mb-8 text-center">
 
-          <button
-            onClick={() => navigate('/')}
-            className="theme-heading text-2xl font-bold tracking-tight"
-          >
-            Resume<span className="text-blue-600">Builder</span>
-          </button>
+          <div className="flex items-center justify-between">
+  <button
+    onClick={() => navigate('/')}
+    className="theme-heading text-2xl font-bold tracking-tight"
+  >
+    Resume<span className="text-blue-600">Builder</span>
+  </button>
+
+  <ThemeToggle />
+</div>
 
           <p className="theme-muted mt-3">
             Create your account and start building resumes

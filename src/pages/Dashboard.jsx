@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useAuth } from '../context/AuthContext'
 import { useNavigate } from 'react-router-dom'
 import api from '../api/axios'
+import ThemeToggle from '../components/ThemeToggle'
 
 function Dashboard() {
   const { logout } = useAuth()
@@ -57,13 +58,17 @@ function Dashboard() {
               Manage your resumes
             </p>
           </div>
+             
 
+          <div className="flex items-center gap-3">
+           <ThemeToggle />   
           <button
             className="theme-button rounded-lg border px-4 py-2 text-sm font-medium transition"
             onClick={handleLogout}
           >
             Logout
           </button>
+         </div>
 
         </div>
       </header>

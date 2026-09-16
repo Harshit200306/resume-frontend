@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { loginUser } from '../services/authService'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
+import ThemeToggle from '../components/ThemeToggle'
 
 function Login() {
   const [email, setEmail] = useState('')
@@ -42,6 +43,9 @@ function Login() {
       <div className="relative w-full max-w-md">
 
         <div className="mb-8 text-center">
+          
+
+           <div className="flex items-center justify-between">
 
           <button
             onClick={() => navigate('/')}
@@ -49,6 +53,8 @@ function Login() {
           >
             Resume<span className="text-blue-600">Builder</span>
           </button>
+           <ThemeToggle />
+          </div>
 
           <p className="theme-muted mt-3">
             Login to manage your resumes
